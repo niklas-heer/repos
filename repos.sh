@@ -37,7 +37,7 @@ repo_status() {
     all_dirs=0;
     up_dirs=0;
     
-    for file in */*; do
+    for file in */*/*; do
         if [[ -d "$file" && ! -L "$file" ]]; then
             ((all_dirs++))
             output="$(git -c color.status=always -C $file status -s -u)"
