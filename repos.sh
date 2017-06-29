@@ -50,18 +50,18 @@ repo_status() {
                 
                 folder="${file%%/*}";
                 subfolder="${file#*/}";
-                output="${output//$'\n'/\n│             }";
-                echo "├── $folder";
-                echo "│   └── ($up_dirs) $subfolder";
-                echo "│             $output\n│";
+                output="${output}";
+                printf "├── $folder\n";
+                printf "│   └── ($up_dirs) $subfolder\n";
+                printf "│             $output\n│\n";
             fi;
         fi;
     done;
     
     if [ "$up_dirs" -eq "0" ]; then
-        echo "└── ${bold}Everything is okay. :)${normal}";
+        printf "└── ${bold}Everything is okay. :)${normal}\n";
     else
-        echo "│\n└── ${bold}$up_dirs${normal} out of ${bold}$all_dirs${normal} have changes.";
+        printf "│\n└── ${bold}$up_dirs${normal} out of ${bold}$all_dirs${normal} have changes.\n";
     fi
     
     cd $OLDPWD
