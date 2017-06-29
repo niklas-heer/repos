@@ -80,7 +80,7 @@ main() {
             if [ -z "$2" ]; then
                 cd "$REPO_DIR"
             else
-                cd "$REPO_DIR/${NIH_UPDATABLE_DIRS[$2]}"
+                cd "$REPO_DIR/${UPDATABLE_DIRS[$2]}"
             fi
         ;;
         -l | list)
