@@ -14,6 +14,7 @@ repo_display_help() {
     echo "Usage: repos [option...]" >&2
     echo
     echo "   -h, help           Displays this help page."
+    echo "   -a, add            Add a repository to repos."
     echo "   -l, list           Displays a tree of all repos."
     echo "   -s, status         Displays all repos with uncommited changes."
     echo "   -j, jump <int>     Jumps into the repo main dir. ($REPO_DIR)"
@@ -70,6 +71,10 @@ list() {
     tree -d -L 3 "$REPO_DIR"
 }
 
+add_repo(){
+    echo "Error: NIY. (URL: $1)"
+}
+
 
 main() {
     case "$1" in
@@ -82,6 +87,9 @@ main() {
             else
                 cd "$REPO_DIR/${UPDATABLE_DIRS[$2]}"
             fi
+        ;;
+        -a | add)
+            add_repo $2
         ;;
         -l | list)
             list
