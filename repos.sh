@@ -2,7 +2,7 @@
 #
 # Description: A tool to manage git repos.
 # Author: Niklas Heer (niklas.heer@gmail.com)
-# Version: 0.1.0 (2017-06-27)
+# Version: 0.1.1 (2017-06-30)
 
 REPO_DIR="$HOME/repos"
 UPDATABLE_DIRS=()
@@ -50,10 +50,14 @@ repo_status() {
                 
                 folder="${file%%/*}";
                 subfolder="${file#*/}";
-                output="${output}";
+
                 printf "├── $folder\n";
                 printf "│   └── ($up_dirs) $subfolder\n";
-                printf "│             $output\n│\n";
+
+                # outputs each files git status  
+                while read -r output; do
+                    printf "│             $output\n"
+                done <<< "$output"
             fi;
         fi;
     done;
