@@ -76,7 +76,15 @@ list() {
 }
 
 add_repo(){
-    echo "Error: NIY. (URL: $1)"
+    url=$1
+    url_without_suffix="${url%.*}"
+    reponame="$(basename "${url_without_suffix}")"
+    hostname="$(basename "${url_without_suffix%/${reponame}}")"
+
+    echo "$url_without_suffix"
+    echo "$reponame"
+    echo "$hostname"
+    # echo "Error: NIY. (URL: $1)"
 }
 
 
